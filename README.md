@@ -1,0 +1,4 @@
+algorithms
+==========
+
+Collections of algorithms
