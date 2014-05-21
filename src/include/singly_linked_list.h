@@ -2,8 +2,8 @@
 // node for singly linked list
 typedef struct singly_linked_list_node 
 {
-		int data;
-		struct singly_linked_list_node *next;
+    int data;
+    struct singly_linked_list_node *next;
 } singly_linked_list_node;
 
 
