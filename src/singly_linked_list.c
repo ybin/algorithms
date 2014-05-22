@@ -43,10 +43,35 @@ DLL_EXPORT void singly_linked_list_clean(singly_linked_list_node *head) {
     }
 }
 
-DLL_EXPORT int singly_linked_list_remove(singly_linked_list_node **head, int val) {
-    int ret = 0;
+DLL_EXPORT void singly_linked_list_remove(singly_linked_list_node **head, int val) {
+    if(*head == NULL) {
+        printf("not find %d\n", val);
+        return;
+    }
     
-    return ret;
+    singly_linked_list_node *node = *head;
+    singly_linked_list_node *prev = *head;
+    
+    if(node->data == val) {
+        *head = (*head)->next;
+        free(node);
+        printf("delete %d\n", val);
+        return;
+    }
+
+    node = prev->next;
+    while(node != NULL) {
+        if(node->data == val) {
+            prev->next = node->next;
+            free(node);
+            printf("delete %d\n", val);
+            return;
+        }
+        prev = node;
+        node = node->next;
+    }
+
+    printf("not find %d\n", val);
 }
 
 

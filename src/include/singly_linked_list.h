@@ -18,7 +18,7 @@ void singly_linked_list_traverse(singly_linked_list_node *head);
 
 // remove
 // if remove successfully, return non-zero, otherwise 0.
-int singley_linked_list_remove(singly_linked_list_node **head, int val);
+void singley_linked_list_remove(singly_linked_list_node **head, int val);
 
 // clean
 void singly_linked_list_clean(singly_linked_list_node *head);

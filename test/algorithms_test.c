@@ -25,14 +25,7 @@ void singly_linked_list_test() {
 
     // test remove
     for(i = 1; i < 9; i++) {
-        if(singly_linked_list_contain(sll, i)) {
-            printf("contian %d, now remove it...\n", i);
-            if(singly_linked_list_remove(&sll, i)) {
-                printf("remove %d success.\n", i);
-            } else {
-                printf("remove %d fail.\n", i);
-            }
-        }
+        singly_linked_list_remove(&sll, i);
     }
     
     // test clean()
@@ -116,7 +109,7 @@ void test_program() {
 int main()
 {
     singly_linked_list_test();
-    test_program();
+    //test_program();
     
 	return 0;
 }
