@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <singly_linked_list.h>
+#include <double_linked_list.h>
 
 void singly_linked_list_test() {
     singly_linked_list_node *sll = NULL;
@@ -33,6 +34,40 @@ void singly_linked_list_test() {
     singly_linked_list_clean(sll);
     sll = NULL;
 }
+
+void double_linked_list_test() {
+    double_linked_list_node *dll;
+	    // test insert()
+	double_linked_list_insert(&dll, 10);
+	double_linked_list_insert(&dll, 11);
+	double_linked_list_insert(&dll, 12);
+
+    // test traverse()
+	printf("traverse list:\n");
+	double_linked_list_traverse(dll);
+
+    // test contain()
+    int i;
+    for(i = 10; i < 19; i++) {
+        if(double_linked_list_contain(dll, i) != 0) {
+            printf("contain %d\n", i);
+        } else {
+            printf("not contain %d\n", i);
+        }
+    }
+
+    // test remove
+    printf("test remove\n");
+    for(i = 10; i < 19; i++) {
+        double_linked_list_remove(&dll, i);
+    }
+    
+    // test clean()
+    printf("test double list clean()");
+    double_linked_list_clean(dll);
+    dll = NULL;
+}
+    
 
 // 找出字符串input中的最大数字字符串，该字符串保存到output中，
 // 返回该数字字符串的长度。
@@ -109,6 +144,8 @@ void test_program() {
 int main()
 {
     singly_linked_list_test();
+    double_linked_list_test();
+    
     //test_program();
     
 	return 0;

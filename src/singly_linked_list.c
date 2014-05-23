@@ -2,6 +2,7 @@
 #define DLL_EXPORT __declspec(dllexport)
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <singly_linked_list.h>
 
 DLL_EXPORT static void singly_linked_list_insert(singly_linked_list_node **head, int val) {
@@ -19,7 +20,7 @@ DLL_EXPORT static void singly_linked_list_insert(singly_linked_list_node **head,
 
 DLL_EXPORT void singly_linked_list_traverse(singly_linked_list_node *head) {
     while(head != NULL) {
-        printf("%d\n", head->data);
+        printf("%d ", head->data);
         head = head->next;
     }
 }
@@ -73,5 +74,3 @@ DLL_EXPORT void singly_linked_list_remove(singly_linked_list_node **head, int va
 
     printf("not find %d\n", val);
 }
-
-
