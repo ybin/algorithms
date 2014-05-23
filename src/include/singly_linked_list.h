@@ -1,3 +1,5 @@
+#ifndef _SINGLY_LINKED_LIST_H_
+#define _SINGLY_LINKED_LIST_H_
 // node for singly linked list
 typedef struct singly_linked_list_node 
 {
@@ -22,3 +24,4 @@ void singley_linked_list_remove(singly_linked_list_node **head, int val);
 
 // clean
 void singly_linked_list_clean(singly_linked_list_node *head);
+#endif

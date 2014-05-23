@@ -1,3 +1,5 @@
+#ifndef _DOUBLE_LINKED_LIST_H_
+#define _DOUBLE_LINKED_LIST_H_
 // node for double linked list
 typedef struct double_linked_list_node 
 {
@@ -26,3 +28,4 @@ void double_linked_list_remove(double_linked_list_node **head, int val);
 
 // clean
 void double_linked_list_clean(double_linked_list_node *head);
+#endif

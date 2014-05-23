@@ -3,6 +3,7 @@
 #include <singly_linked_list.h>
 #include <double_linked_list.h>
 #include <binary_search_tree.h>
+#include <queue.h>
 
 void singly_linked_list_test() {
     singly_linked_list_node *sll = NULL;
@@ -83,11 +84,14 @@ void binary_search_tree_test() {
     bst_node * tree = NULL;
     // insert()
     printf("****** bst insert()\n");
-    int i;
-    for(i = 1; i < 4; i++) {
-        printf("insert %d\n", i);
-        bst_insert(&tree, i);
-    }
+
+    bst_insert(&tree, 8);
+    bst_insert(&tree, 4);
+    bst_insert(&tree, 12);
+    bst_insert(&tree, 2);
+    bst_insert(&tree, 5);
+    bst_insert(&tree, 11);
+    bst_insert(&tree, 13);
 
     // increase traverse()
     printf("****** bst increase_traverse()\n");
@@ -99,13 +103,41 @@ void binary_search_tree_test() {
     bst_decrease_traverse(tree);
     putchar('\n');
 
+    // breadth traverse
+    printf("****** bst breadth_traverse()\n");
+    bst_breadth_traverse(tree);
+
     // contain()
     printf("****** bst contain()\n");
+    int i;
     for(i = 1; i < 9; i++) {
         if(bst_contain(tree, i) != 0) {
             printf("contain %d\n", i);
         } else {
             printf("not contain %d\n", i);
+        }
+    }
+
+    
+}
+
+void queue_test() {
+    struct queue q;
+    q.head = q.tail = NULL;
+    q.enqueue = enqueue;
+    q.dequeue = dequeue;
+    
+    int val;
+    int i;
+    for(i = 0; i < 6; i++) {
+        q.enqueue(&q, i);
+        printf("enqueue %d\n", i);
+    }
+    for(i = 0; i < 9; i++) {
+        if(q.dequeue(&q, &val)) {
+            printf("dequeue %d\n", val);
+        } else {
+            printf("no data to dequeue\n");
         }
     }
 }
@@ -188,6 +220,7 @@ int main()
     //singly_linked_list_test();
     //double_linked_list_test();
     binary_search_tree_test();
+    //queue_test();
     
     //test_program();
     
