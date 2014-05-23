@@ -90,22 +90,46 @@ static int dequeue(struct bst_queue *queue, bst_node **val) {
     free(node);
     return 1;
 }
-    
+
+/*
+  按行输出
+  a. 利用队列实现按行输出
+  b. 输出时如何正确换行？
+  ***每次入队时，检查是否下一行的第一个node已经入队(标志位标识)，
+  如果没有入队就表明当前的node正是第一个node，将其入队，否则不操作
+  ***每次出对时，检查当前node是否为一行的第一个node(有变量记录了第一个node)，
+  如果是就输出换行符，否则不操作。
+ */
 DLL_EXPORT void bst_breadth_traverse(bst_node *tree) {
     struct bst_queue q;
     q.head = q.tail = NULL;
+    int is_first_node_in_queue = 0; // if first node of new row in queue
+    bst_node *first_node = NULL;
     
     while(tree != NULL) {
-        printf("%d\n", tree->data);
+        printf(" %d ", tree->data);
         if(tree->left != NULL) {
             enqueue(&q, tree->left);
+            if(!is_first_node_in_queue) {
+                first_node = tree->left;
+                is_first_node_in_queue = 1;
+            }
         }
         if(tree->right != NULL) {
             enqueue(&q, tree->right);
+            if(!is_first_node_in_queue) {
+                first_node = tree->right;
+                is_first_node_in_queue = 1;
+            }
         }
 
         if(dequeue(&q, &tree) == 0) { //dequeue fail
             tree == NULL;
         }
+        if(tree == first_node) {
+            printf("\n"); // make sure you know the algorithm of this newline.
+            is_first_node_in_queue = 0;
+        }
     }
+    printf("\n");
 }

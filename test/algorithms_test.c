@@ -89,8 +89,8 @@ void binary_search_tree_test() {
     bst_insert(&tree, 4);
     bst_insert(&tree, 12);
     bst_insert(&tree, 2);
-    bst_insert(&tree, 5);
-    bst_insert(&tree, 11);
+    //bst_insert(&tree, 5);
+    //bst_insert(&tree, 11);
     bst_insert(&tree, 13);
 
     // increase traverse()
