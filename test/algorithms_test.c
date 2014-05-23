@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <singly_linked_list.h>
 #include <double_linked_list.h>
+#include <binary_search_tree.h>
 
 void singly_linked_list_test() {
     singly_linked_list_node *sll = NULL;
@@ -77,7 +78,38 @@ void double_linked_list_test() {
     double_linked_list_clean(dll);
     dll = NULL;
 }
-    
+
+void binary_search_tree_test() {
+    bst_node * tree = NULL;
+    // insert()
+    printf("****** bst insert()\n");
+    int i;
+    for(i = 1; i < 4; i++) {
+        printf("insert %d\n", i);
+        bst_insert(&tree, i);
+    }
+
+    // increase traverse()
+    printf("****** bst increase_traverse()\n");
+    bst_increase_traverse(tree);
+    putchar('\n');
+
+    // decrease traverse()
+    printf("****** bst decrease_traverse()\n");
+    bst_decrease_traverse(tree);
+    putchar('\n');
+
+    // contain()
+    printf("****** bst contain()\n");
+    for(i = 1; i < 9; i++) {
+        if(bst_contain(tree, i) != 0) {
+            printf("contain %d\n", i);
+        } else {
+            printf("not contain %d\n", i);
+        }
+    }
+}
+
 
 // 找出字符串input中的最大数字字符串，该字符串保存到output中，
 // 返回该数字字符串的长度。
@@ -153,8 +185,9 @@ void test_program() {
 
 int main()
 {
-    singly_linked_list_test();
-    double_linked_list_test();
+    //singly_linked_list_test();
+    //double_linked_list_test();
+    binary_search_tree_test();
     
     //test_program();
     
