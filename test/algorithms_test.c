@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <singly_linked_list.h>
 
 void singly_linked_list_test() {
@@ -81,7 +82,7 @@ int find_max_number_substring(char *input, char **output) {
     }
 
     // 重复使用p，应该避免
-    p = (char*)malloc(length + 1, sizeof(char));
+    p = (char*)malloc((length+1)*sizeof(char));
     if(p == NULL) {
         *output = NULL;
         return 0;
@@ -104,7 +105,6 @@ void test_program() {
     printf("length: %d\nsubstring: %s\n", len, output);
     free(output);
 }
-
 
 int main()
 {
