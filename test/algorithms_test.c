@@ -37,16 +37,26 @@ void singly_linked_list_test() {
 
 void double_linked_list_test() {
     double_linked_list_node *dll;
-	    // test insert()
+    // test insert()
+    printf("****** double list: insert()\n");
 	double_linked_list_insert(&dll, 10);
 	double_linked_list_insert(&dll, 11);
 	double_linked_list_insert(&dll, 12);
 
     // test traverse()
+    printf("****** double list: traverse()\n");
 	printf("traverse list:\n");
 	double_linked_list_traverse(dll);
+    printf("\n");
+
+    // test inverse_traverse()
+    printf("****** double list: inverse traverse()\n");
+    printf("inverse traverse list:\n");
+    double_linked_list_inverse_traverse(dll);
+    printf("\n");
 
     // test contain()
+    printf("****** double list: contain()\n");
     int i;
     for(i = 10; i < 19; i++) {
         if(double_linked_list_contain(dll, i) != 0) {
@@ -57,13 +67,13 @@ void double_linked_list_test() {
     }
 
     // test remove
-    printf("test remove\n");
+    printf("****** double list: remove()\n");
     for(i = 10; i < 19; i++) {
         double_linked_list_remove(&dll, i);
     }
     
     // test clean()
-    printf("test double list clean()");
+    printf("****** double list: clean()\n");
     double_linked_list_clean(dll);
     dll = NULL;
 }

@@ -28,15 +28,20 @@ DLL_EXPORT void double_linked_list_traverse(double_linked_list_node *head) {
 }
 
 DLL_EXPORT void double_linked_list_inverse_traverse(double_linked_list_node *head) {
+    if(head == NULL) {
+        return;
+    }
+    
     double_linked_list_node *tail = head;
     // find tail
-    while(head != NULL) {
-        tail = head->next;
+    while(tail->next != NULL) {
+        tail = tail->next;
     }
+    double_linked_list_node *p = tail;
     // traverse inversely
-    while(tail != NULL) {
-        printf("%d ", tail->data);
-        tail = tail->prev;
+    while(p != NULL) {
+        printf("%d ", p->data);
+        p = p->prev;
     }
 }
 
