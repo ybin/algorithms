@@ -133,3 +133,85 @@ DLL_EXPORT void bst_breadth_traverse(bst_node *tree) {
     }
     printf("\n");
 }
+
+// analysis:
+// Step 1. find node, using recursive
+// Step 2. delete node:
+//   if our node,
+//   a) is a leaf node: delete node directly
+//   b) only has left or right child: let the only child take our node's place
+//   c) has two children:
+//      there are more than one way to delete it,
+//      i) let the biggest node of LEFT subtree take its place
+//      ii) let the smallest node of RIGHT subtree take its place
+//      iii) 让它的左子树成为其右子树_最小节点_的左子树(即一路右旋到底)
+//      iiii) 让它的右子树成为其左子树_最大节点_的右子树(即一路左旋到底)
+DLL_EXPORT void bst_remove(bst_node **tree, int val) {
+    if((*tree) == NULL) {
+        printf("%d is not contained, nothing to remove.\n", val);
+        return;
+    } else if (val < (*tree)->data) {
+        bst_remove(&((*tree)->left), val);
+    } else if (val > (*tree)->data) {
+        bst_remove(&((*tree)->right), val);
+    } else { // get it! Begin to delete...
+        bst_node *node = *tree;
+        if((*tree)->left == NULL && (*tree)->right == NULL) {
+            // no child node
+            *tree = NULL;
+        } else if ((*tree)->right == NULL) {
+            // only has left child
+            *tree = (*tree)->left;
+        } else if ((*tree)->left == NULL) {
+            // only has right child
+            *tree = (*tree)->right;
+        } else {
+            // has both left and right children
+            #deine _USE_METHOD_  1
+            
+            #if _USE_METHOD_ == 1
+            // Method-i
+            bst_node *left_biggest_node = (*tree)->left;
+            while(left_biggest_node->right != NULL) {
+                left_biggest_node = left_biggest_node->right;
+            }
+            (*tree)->data = left_biggest_node->data;
+            node = left_biggest_node;
+            if(left_biggest_node->left != NULL) {
+                left_biggest_node = left_biggest_node->left;
+            }
+            #elif _USE_METHOD_ == 2
+            // Method-ii
+            bst_node *right_smallest_node = (*tree)->right;
+            while(right_smallest_node->left != NULL) {
+                right_smallest_node = right_smallest_node->left;
+            }
+            (*tree)->data = right_smallest_node->data;
+            node = right_smallest_node;
+            if(right_smallest_node->right != NULL) {
+                right_smallest_node = right_smallest_node->right;
+            }
+            #elif _USE_METHOD_ == 3
+            // Method-iii
+            bst_node *right_smallest_node = (*tree)->right;
+            while(right_smallest_node->left != NULL) {
+                right_smallest_node = right_smallest_node->left;
+            }
+            right_smallest_node->left = (*tree)->left;
+            //node = *tree;
+            *tree = (*tree)->right;
+            #else
+            // Method-iiii
+            bst_node *left_biggest_node = (*tree)->left;
+            while(left_biggest_node->right != NULL) {
+                left_biggest_node = left_biggest_node->right;
+            }
+            left_biggest_node->right = (*tree)->right;
+            //node = *tree;
+            *tree = (*tree)->left;
+            #endif
+        }
+        free(node);
+        printf("bst delete %d\n", val);
+    }
+}

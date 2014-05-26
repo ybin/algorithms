@@ -23,4 +23,8 @@ int bst_contain(bst_node *tree, int val);
 // breadth_traverse
 void bst_breadth_traverse(bst_node *tree);
 
+// remove
+void bst_remove(bst_node **tree, int val);
+
+
 #endif

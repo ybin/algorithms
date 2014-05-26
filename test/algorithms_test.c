@@ -118,7 +118,14 @@ void binary_search_tree_test() {
         }
     }
 
-    
+    // delete()
+    printf("****** bst delete()\n");
+    for(i = 8; i < 9; i++) {
+        bst_remove(&tree, i);
+    }
+    printf("now breadth traverse list:\n");
+    bst_breadth_traverse(tree);
+    bst_decrease_traverse(tree);
 }
 
 void queue_test() {
