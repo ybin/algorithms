@@ -180,6 +180,7 @@ DLL_EXPORT void bst_remove(bst_node **tree, int val) {
             if(left_biggest_node->left != NULL) {
                 left_biggest_node = left_biggest_node->left;
             }
+            
             #elif _USE_METHOD_ == 2
             // Method-ii
             bst_node *right_smallest_node = (*tree)->right;
@@ -191,6 +192,7 @@ DLL_EXPORT void bst_remove(bst_node **tree, int val) {
             if(right_smallest_node->right != NULL) {
                 right_smallest_node = right_smallest_node->right;
             }
+            
             #elif _USE_METHOD_ == 3
             // Method-iii
             bst_node *right_smallest_node = (*tree)->right;
@@ -200,6 +202,7 @@ DLL_EXPORT void bst_remove(bst_node **tree, int val) {
             right_smallest_node->left = (*tree)->left;
             //node = *tree;
             *tree = (*tree)->right;
+            
             #else
             // Method-iiii
             bst_node *left_biggest_node = (*tree)->left;

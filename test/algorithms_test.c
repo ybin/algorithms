@@ -4,6 +4,7 @@
 #include <double_linked_list.h>
 #include <binary_search_tree.h>
 #include <queue.h>
+#include <treap.h>
 
 void singly_linked_list_test() {
     singly_linked_list_node *sll = NULL;
@@ -89,8 +90,8 @@ void binary_search_tree_test() {
     bst_insert(&tree, 4);
     bst_insert(&tree, 12);
     bst_insert(&tree, 2);
-    //bst_insert(&tree, 5);
-    //bst_insert(&tree, 11);
+    bst_insert(&tree, 5);
+    bst_insert(&tree, 11);
     bst_insert(&tree, 13);
 
     // increase traverse()
@@ -126,6 +127,33 @@ void binary_search_tree_test() {
     printf("now breadth traverse list:\n");
     bst_breadth_traverse(tree);
     bst_decrease_traverse(tree);
+    printf("\n");
+}
+
+void treap_test() {
+    treap_node *treap = NULL;
+    printf("******treap_insert()\n");
+    treap_insert(&treap, 2, 4);
+    treap_insert(&treap, 4, 6);
+    treap_insert(&treap, 5, 3);
+    treap_insert(&treap, 8, 7);
+    treap_insert(&treap, 11, 2);
+    treap_insert(&treap, 12, 5);
+    treap_insert(&treap, 13, 1);
+
+    printf("******treap_traverse()\n");
+    treap_traverse(treap);
+    printf("\n");
+
+    printf("******treap_remove()\n");
+    int i;
+    for(i=1; i<5; i++) {
+        treap_remove(&treap, i);        
+    }
+
+    printf("******treap_traverse()\n");
+    treap_traverse(treap);
+    printf("\n");
 }
 
 void queue_test() {
@@ -226,8 +254,9 @@ int main()
 {
     //singly_linked_list_test();
     //double_linked_list_test();
+    //queue_test();    
     binary_search_tree_test();
-    //queue_test();
+    treap_test();
     
     //test_program();
     
