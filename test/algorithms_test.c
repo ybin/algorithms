@@ -5,6 +5,7 @@
 #include <binary_search_tree.h>
 #include <queue.h>
 #include <treap.h>
+#include <avl.h>
 
 void singly_linked_list_test() {
     singly_linked_list_node *sll = NULL;
@@ -156,6 +157,32 @@ void treap_test() {
     printf("\n");
 }
 
+void avl_test() {
+    avl_node *avl = NULL;
+
+    printf("****** avl_insert()\n");
+    avl_insert(&avl, 2);
+    avl_insert(&avl, 4);
+    avl_insert(&avl, 5);
+    avl_insert(&avl, 8);
+    avl_insert(&avl, 11);
+    avl_insert(&avl, 12);
+    avl_insert(&avl, 13);
+
+    printf("****** avl_traverse()\n");
+    avl_traverse(avl);
+    printf("\n");
+
+    printf("****** avl_remove()\n");
+    avl_remove(&avl, 2);
+    avl_remove(&avl, 12);
+    avl_remove(&avl, 8);
+
+    printf("****** avl_traverse()\n");
+    avl_traverse(avl);
+    printf("\n");
+}
+
 void queue_test() {
     struct queue q;
     q.head = q.tail = NULL;
@@ -255,8 +282,9 @@ int main()
     //singly_linked_list_test();
     //double_linked_list_test();
     //queue_test();    
-    binary_search_tree_test();
-    treap_test();
+    //binary_search_tree_test();
+    //treap_test();
+    avl_test();
     
     //test_program();
     
