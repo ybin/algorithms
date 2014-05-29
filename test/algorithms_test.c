@@ -6,6 +6,9 @@
 #include <queue.h>
 #include <treap.h>
 #include <avl.h>
+#include <list.h>
+#include <int_list.h>
+#include <double_list.h>
 
 void singly_linked_list_test() {
     singly_linked_list_node *sll = NULL;
@@ -204,6 +207,24 @@ void queue_test() {
     }
 }
 
+void list_test() {
+    LIST_NODE(int_list);
+    int_list_insert(&int_list, 1);
+    int_list_insert(&int_list, 2);
+    int_list_insert(&int_list, 3);
+    int_list_insert(&int_list, 4);
+    int_list_traverse(&int_list);
+
+    putchar('\n');
+
+    LIST_NODE(double_list);
+    double_list_insert(&double_list, 1.11);
+    double_list_insert(&double_list, 2.11);
+    double_list_insert(&double_list, 3.11);
+    double_list_insert(&double_list, 4.11);
+    double_list_traverse(&double_list);
+}
+
 
 // 找出字符串input中的最大数字字符串，该字符串保存到output中，
 // 返回该数字字符串的长度。
@@ -284,7 +305,8 @@ int main()
     //queue_test();    
     //binary_search_tree_test();
     //treap_test();
-    avl_test();
+    //avl_test();
+    list_test();
     
     //test_program();
     
