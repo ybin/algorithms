@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <singly_linked_list.h>
 #include <double_linked_list.h>
 #include <binary_search_tree.h>
@@ -223,6 +224,30 @@ void list_test() {
     double_list_insert(&double_list, 3.11);
     double_list_insert(&double_list, 4.11);
     double_list_traverse(&double_list);
+    putchar('\n');
+}
+
+#define HEAP_SIZE  10000
+void heap_test() {
+    int heap[HEAP_SIZE];
+    int heap_count = 0;
+    int i;
+    
+    // initialize?
+    srand((unsigned)time(NULL));
+    int r;
+    for(i=0; i<HEAP_SIZE; i++) {
+        r = rand();
+        heap_insert(heap, heap_count, r);
+        heap_count++;
+    }
+    putchar('\n');
+    // traverse
+    for(i=0; i<10; i++) {
+        printf(" %d ", heap[0]); // the max one
+        heap_remove(heap, heap_count, heap[0]);
+        heap_count--;
+    }
 }
 
 
@@ -298,6 +323,14 @@ void test_program() {
     free(output);
 }
 
+void rand_test() {
+    srand((unsigned)time(NULL));
+    int i;
+    for(i=0; i<10; i++) {
+        printf(" %d ", rand());
+    }
+}
+
 int main()
 {
     //singly_linked_list_test();
@@ -306,7 +339,9 @@ int main()
     //binary_search_tree_test();
     //treap_test();
     //avl_test();
-    list_test();
+    //list_test();
+    //rand_test();
+    heap_test();
     
     //test_program();
     
