@@ -10,6 +10,7 @@
 #include <list.h>
 #include <int_list.h>
 #include <double_list.h>
+#include <rb.h>
 
 void singly_linked_list_test() {
     singly_linked_list_node *sll = NULL;
@@ -250,6 +251,15 @@ void heap_test() {
     }
 }
 
+void rb_test() {
+    rb_node rb = { NULL, NULL, NULL, BLACK, 0 };
+    rb_insert(&rb, 1);
+    rb_insert(&rb, 2);
+    rb_insert(&rb, 3);
+    rb_insert(&rb, 4);
+    rb_insert(&rb, 5);
+    rb_insert(&rb, 6);
+}
 
 // 找出字符串input中的最大数字字符串，该字符串保存到output中，
 // 返回该数字字符串的长度。
@@ -341,10 +351,10 @@ int main()
     //avl_test();
     //list_test();
     //rand_test();
-    heap_test();
+    //heap_test();
+    rb_test();
     
     //test_program();
-    
 	return 0;
 }
 
