@@ -261,6 +261,20 @@ void rb_test() {
     rb_insert(&rb, 6);
 }
 
+void merge_sort_test() {
+    int N = 2000;
+    int *data = (int*)malloc(N * sizeof(int));
+    srand((unsigned)time(NULL));
+    for(int i = 0; i < N; i++) {
+        data[i] = rand();
+    }
+    merge_sort(data, N);
+    for(int i = 0; i < N; i++) {
+        printf(" %d ", data[i]);
+    }
+}
+
+
 // 找出字符串input中的最大数字字符串，该字符串保存到output中，
 // 返回该数字字符串的长度。
 int find_max_number_substring(char *input, char **output) {
@@ -352,7 +366,8 @@ int main()
     //list_test();
     //rand_test();
     //heap_test();
-    rb_test();
+    //rb_test();
+    merge_sort_test();
     
     //test_program();
 	return 0;
