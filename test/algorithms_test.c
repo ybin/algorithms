@@ -272,6 +272,23 @@ void merge_sort_test() {
     free(data);
 }
 
+void quick_sort_test() {
+    int N = 200;
+    int *data = get_random_array(N);
+    quick_sort(data, 0, N-1);
+    int i;
+    for(i = 1; i < N && data[i-1] <= data[i]; i++) {
+        printf(" %d ", data[i-1]);
+    }
+
+    if(i == N)
+        printf("\npass\n");
+    else
+        printf("\nfail\n");
+    free(data);    
+}
+
+
 void sieve_prime_number_test() {
     sieve_prime_number(200);
 }
@@ -369,7 +386,8 @@ int main()
     //heap_test();
     //rb_test();
     //merge_sort_test();
-    sieve_prime_number_test();
+    quick_sort_test();
+    //sieve_prime_number_test();
     
     //test_program();
 	return 0;
