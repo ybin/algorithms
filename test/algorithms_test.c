@@ -11,6 +11,7 @@
 #include <int_list.h>
 #include <double_list.h>
 #include <rb.h>
+#include <util.h>
 
 void singly_linked_list_test() {
     singly_linked_list_node *sll = NULL;
@@ -262,18 +263,18 @@ void rb_test() {
 }
 
 void merge_sort_test() {
-    int N = 2000;
-    int *data = (int*)malloc(N * sizeof(int));
-    srand((unsigned)time(NULL));
-    for(int i = 0; i < N; i++) {
-        data[i] = rand();
-    }
+    int N = 200;
+    int *data = get_random_array(N);
     merge_sort(data, N);
     for(int i = 0; i < N; i++) {
         printf(" %d ", data[i]);
     }
+    free(data);
 }
 
+void sieve_prime_number_test() {
+    sieve_prime_number(200);
+}
 
 // 找出字符串input中的最大数字字符串，该字符串保存到output中，
 // 返回该数字字符串的长度。
@@ -367,7 +368,8 @@ int main()
     //rand_test();
     //heap_test();
     //rb_test();
-    merge_sort_test();
+    //merge_sort_test();
+    sieve_prime_number_test();
     
     //test_program();
 	return 0;
