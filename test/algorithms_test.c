@@ -273,18 +273,16 @@ void merge_sort_test() {
 }
 
 void quick_sort_test() {
-    int N = 200;
+    int N = 400000;
     int *data = get_random_array(N);
+    
     quick_sort(data, 0, N-1);
-    int i;
-    for(i = 1; i < N && data[i-1] <= data[i]; i++) {
-        printf(" %d ", data[i-1]);
-    }
 
-    if(i == N)
-        printf("\npass\n");
-    else
-        printf("\nfail\n");
+    // test
+    int i = 1;
+    while(i < N && data[i] >= data[i-1]) i++;
+    i == N ? printf("\npass\n") : printf("\nfail\n");
+    
     free(data);    
 }
 
