@@ -7,6 +7,8 @@ static void swap(int *a, int *b) {
     int tmp = *a;
     *a = *b;
     *b = tmp;
+    // 更加简洁的算法
+    // *a ^= *b ^= *a ^= *b;
 }
 
 static int get_pivot(int low, int high) {

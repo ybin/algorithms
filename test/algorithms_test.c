@@ -286,6 +286,33 @@ void quick_sort_test() {
     free(data);    
 }
 
+void odd_even_test() {
+    int N = 400;
+    int *data = get_random_array(N);
+    odd_even(data, N);
+    int pass = 1;
+    int flag = 1;
+    for(int i = 0; i < N ; i++) {
+        if(!(data[i]&1)) {
+            // 偶数，flag设为0
+            flag = 0;
+            continue;
+        } else if (flag == 1) {
+            // 奇数，对应到flag为1就是正确的
+            continue;
+        } else {
+            // 奇数，但是flag为0，说明此奇数出现在偶数后面，错误！
+            pass = 0;
+            break;
+        }
+    }
+    pass ? printf("\npass\n") : printf("\nfail\n");
+    /*
+    while(pass = !(data[i++] ^ flag)) {
+        flag = i < N && (data[i] & 1);
+    }
+    */
+}
 
 void sieve_prime_number_test() {
     sieve_prime_number(200);
@@ -384,8 +411,9 @@ int main()
     //heap_test();
     //rb_test();
     //merge_sort_test();
-    quick_sort_test();
+    //quick_sort_test();
     //sieve_prime_number_test();
+    odd_even_test();
     
     //test_program();
 	return 0;
